@@ -1,4 +1,4 @@
-# soccer
+# MLS Soccer Project
 
 This script was created in an attempt to see which factors determine who wins in MLS matches. The data used were the general stats from the 2019 regular and post seasons.
 The stats used were passing accuracy, shots on goal, corners, time of possession, fouls, red cards, and offsides. The initial analysis was done using Tableau visualizations,
