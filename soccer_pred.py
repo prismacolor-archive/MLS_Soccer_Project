@@ -69,6 +69,17 @@ def test_model(model, dataframe):
     print("Actual Results: ", y)
 
 
+def clean_data_2(dataframe):
+    reduced_df = dataframe.iloc[:, 3:]
+
+    reduced_df.drop(['Fouls', 'Offsides', 'Red Cards'], axis=1)
+    del reduced_df['Season']
+    del reduced_df['Score']
+
+    # print(reduced_df.head())
+    return reduced_df
+
+
 reduced_train_df = clean_data(training_df)
 rt_tree_model = run_tree_model(reduced_train_df)
 random_forest = random_forest_model(reduced_train_df)
@@ -77,4 +88,15 @@ reduced_test_df = clean_data(test_df)
 test_model(random_forest, reduced_test_df)
 
 ''' Model predicts:  ['Win' 'Win' 'Win' 'Tie' 'Tie' 'Win']
+    Actual Results:    Win   Loss  Loss  Tie   Loss   Loss'''
+
+# removed some categories in an attempt to see if there would be more accuracy
+reduced_2 = clean_data_2(training_df)
+random_forest_alt = random_forest_model(reduced_2)
+
+reduced_test_2 = clean_data_2(test_df)
+test_model(random_forest_alt, reduced_test_2)
+
+'''model made the same predictions, and performed the same overall
+ Model predicts:  ['Win' 'Win' 'Win' 'Tie' 'Tie' 'Win']
     Actual Results:    Win   Loss  Loss  Tie   Loss   Loss'''
