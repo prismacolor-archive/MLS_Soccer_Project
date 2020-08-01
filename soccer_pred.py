@@ -27,6 +27,9 @@ def clean_data(dataframe):
     del reduced_df['Season']
     del reduced_df['Score']
 
+    result_mapping = {'Win': 2, 'Tie': 1, 'Loss': 0}
+    reduced_df.Result = reduced_df.Result.map(result_mapping)
+
     # print(reduced_df.head())
     return reduced_df
 
@@ -75,6 +78,9 @@ def clean_data_2(dataframe):
     reduced_df.drop(['Fouls', 'Offsides', 'Red Cards'], axis=1)
     del reduced_df['Season']
     del reduced_df['Score']
+
+    result_mapping = {'Win': 2, 'Tie': 1, 'Loss': 0}
+    reduced_df.Result = reduced_df.Result.map(result_mapping)
 
     # print(reduced_df.head())
     return reduced_df
